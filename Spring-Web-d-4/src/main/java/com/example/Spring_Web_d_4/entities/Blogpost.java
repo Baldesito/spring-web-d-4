@@ -1,0 +1,24 @@
+package com.example.Spring_Web_d_4.entities;
+
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+@Data
+@Entity
+@Table(name = "blogposts")
+public class Blogpost {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String category;
+    private String title;
+    private String cover;
+    private String content;
+    private double readingTime;
+
+    @ManyToOne
+    @JoinColumn(name = "authorId")
+    private Author author;
+}
